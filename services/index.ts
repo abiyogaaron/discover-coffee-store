@@ -34,7 +34,8 @@ export const getCoffeeStores = async (latLong: string, query: string, limit: num
     const url = END_POINTS.PLACE_SEARCH
       .replace('{query}', query)
       .replace('{latLong}', latLong)
-      .replace('{limit}', limit.toString());
+      .replace('{limit}', limit.toString())
+      .replace('{radius}', '2000');
     const response = await fetch(url, {
       method: 'GET',
       headers: reqHeaders,

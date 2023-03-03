@@ -4,7 +4,7 @@ export const DEFAULT_LAT_LONG = '-6.200000,106.816666';
 
 export const FOURSQUARE_BASE = 'https://api.foursquare.com/v3';
 export const END_POINTS = {
-  PLACE_SEARCH: `${FOURSQUARE_BASE}/places/search?query={query}&ll={latLong}&limit={limit}`,
+  PLACE_SEARCH: `${FOURSQUARE_BASE}/places/search?query={query}&ll={latLong}&limit={limit}&radius={radius}`,
   CREATE_STORE: '/api/coffee-store/create',
   VOTE: '/api/coffee-store/vote',
 };
