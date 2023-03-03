@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import cls from "classnames";
 
-import styles from "./card.module.css";
+import styles from "./Card.module.css";
 
 interface ICardProps {
   name: string;
