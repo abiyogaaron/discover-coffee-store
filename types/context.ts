@@ -1,9 +1,9 @@
 import { Dispatch } from "react";
-import { ICoffeStoresData } from ".";
+import { ICoffeeStoresData } from ".";
 
 export interface IHomeContext {
   latLong: string;
-  coffeeStores: ICoffeStoresData[]
+  coffeeStores: ICoffeeStoresData[]
 }
 
 export enum EAppAction {

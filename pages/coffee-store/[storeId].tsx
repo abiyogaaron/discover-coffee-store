@@ -78,9 +78,14 @@ const CoffeeStore: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
   const { data: storeRecords, error } = useSWR(`/api/coffee-store/${query.storeId}`, fetcher);
 
   const foundedStore: ICoffeeStoresData | null = useMemo(() => {
-    return coffeeStoresContext.find((store) => {
+    const result =  coffeeStoresContext.find((store) => {
       return store.id.toString() === query.storeId
     });
+    
+    if (!result) {
+      return null;
+    }
+    return result;
   }, [coffeeStoresContext]);
 
   const [storeDetail, setStoreDetail] = useState<ICoffeeStoresData | null>(staticCoffeeStore || foundedStore);
