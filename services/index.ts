@@ -41,15 +41,19 @@ export const getCoffeeStores = async (latLong: string, query: string, limit: num
     });
   
     const data = await response.json() as IGetCoffeeStoreResponses;
-    return data.results.map((store, idx) => {
-      return {
-        id: store.fsq_id,
-        name: store.name,
-        address: store.location.address,
-        neighborhood: store.location.locality,
-        imgUrl: photos[idx],
-      }
-    });
+    console.log("getCoffeeStores() ---> data", data);
+    if (data) {
+      return data.results.map((store, idx) => {
+        return {
+          id: store.fsq_id,
+          name: store.name,
+          address: store.location.address,
+          neighborhood: store.location.locality,
+          imgUrl: photos[idx],
+        }
+      });
+    }
+    return [];
   } catch (err) {
     console.error(`error http call: `, err);
     return [];
