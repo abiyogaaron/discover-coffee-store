@@ -30,20 +30,18 @@ export const getCoffeeStores = async (latLong: string, query: string, limit: num
     const reqHeaders: HeadersInit = new Headers();
     reqHeaders.set('Accept', 'application/json');
     reqHeaders.set('Authorization', process.env.NEXT_PUBLIC_FOURSQUARE_API_KEY || '');
-    console.log("PHOTOS ---> ", photos);
+
     const url = END_POINTS.PLACE_SEARCH
       .replace('{query}', query)
       .replace('{latLong}', latLong)
       .replace('{limit}', limit.toString());
-    console.log("URL ---> ", url);
-    console.log("ENV ---> ", process.env.NEXT_PUBLIC_FOURSQUARE_API_KEY)
+
     const response = await fetch(url, {
       method: 'GET',
       headers: reqHeaders,
     });
    
     const data = await response.json() as IGetCoffeeStoreResponses;
-    console.log("data ---->", data);
     if (data) {
       return data.results.map((store, idx) => {
         return {
