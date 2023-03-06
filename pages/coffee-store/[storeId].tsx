@@ -86,7 +86,7 @@ const CoffeeStore: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
       return null;
     }
     return result;
-  }, [coffeeStoresContext]);
+  }, [coffeeStoresContext, query.storeId]);
 
   const [storeDetail, setStoreDetail] = useState<ICoffeeStoresData | null>(staticCoffeeStore || foundedStore);
   const [votingCount, setVotingCount] = useState<number>(0);
@@ -96,7 +96,7 @@ const CoffeeStore: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
     if (staticCoffeeStore) {
       createCoffeeStore({ ...staticCoffeeStore, voting: 0})
     }
-  }, [query.storeId]);
+  }, [query.storeId, staticCoffeeStore]);
 
   useEffect(() => {
     // Get from Context data
