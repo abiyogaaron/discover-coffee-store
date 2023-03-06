@@ -13,7 +13,7 @@ const getStorePhotos = async (query: string) => {
       query,
       perPage: 30,
     });
-    
+    console.log("masuk sini ??? getStorePhotos()")
     if (photos && photos.response) {
       return photos.response.results.map((photo) => photo.urls.regular);
     }
@@ -30,11 +30,12 @@ export const getCoffeeStores = async (latLong: string, query: string, limit: num
     const reqHeaders: HeadersInit = new Headers();
     reqHeaders.set('Accept', 'application/json');
     reqHeaders.set('Authorization', process.env.NEXT_PUBLIC_FOURSQUARE_API_KEY || '');
-
+    console.log("PHOTOS ---> ", photos);
     const url = END_POINTS.PLACE_SEARCH
       .replace('{query}', query)
       .replace('{latLong}', latLong)
-      .replace('{limit}', limit.toString())
+      .replace('{limit}', limit.toString());
+    console.log("URL ---> ", url);
     const response = await fetch(url, {
       method: 'GET',
       headers: reqHeaders,
