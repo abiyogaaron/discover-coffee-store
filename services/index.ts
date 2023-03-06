@@ -30,7 +30,7 @@ export const getCoffeeStores = async (latLong: string, query: string, limit: num
     const reqHeaders: HeadersInit = new Headers();
     reqHeaders.set('Accept', 'application/json');
     reqHeaders.set('Authorization', process.env.NEXT_PUBLIC_FOURSQUARE_API_KEY || '');
-  
+    console.log("ENV VARIABLE -----> ",process.env);
     const url = END_POINTS.PLACE_SEARCH
       .replace('{query}', query)
       .replace('{latLong}', latLong)
