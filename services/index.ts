@@ -36,13 +36,14 @@ export const getCoffeeStores = async (latLong: string, query: string, limit: num
       .replace('{latLong}', latLong)
       .replace('{limit}', limit.toString());
     console.log("URL ---> ", url);
+    console.log("ENV ---> ", process.env.NEXT_PUBLIC_FOURSQUARE_API_KEY)
     const response = await fetch(url, {
       method: 'GET',
       headers: reqHeaders,
     });
-  
+   
     const data = await response.json() as IGetCoffeeStoreResponses;
-
+    console.log("data ---->", data);
     if (data) {
       return data.results.map((store, idx) => {
         return {
